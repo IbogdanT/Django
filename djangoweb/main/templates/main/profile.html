@@ -1,0 +1,24 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Личный кабинет</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Информация об аккаунте</h2>
+            <ul class="list-unstyled">
+                <li><strong>Имя пользователя:</strong> {{ user.username }}</li>
+                <li><strong>Электронная почта:</strong> {{ user.email }}</li>
+                <li><strong>Дата регистрации:</strong> {{ registration_date|date:"d.m.Y" }}</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2>Статистика</h2>
+            <ul class="list-unstyled">
+                <li><strong>Количество написанных новостей:</strong> {{ articles_count }}</li>
+            </ul>
+        </div>
+    </div>
+    <a href="{% url 'index' %}" class="btn btn-primary mt-4">Вернуться на главную</a>
+</div>
+{% endblock %}

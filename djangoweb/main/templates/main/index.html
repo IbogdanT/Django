@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}{{ tittle }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="features">
+    <div class="features text-center"> <!-- Добавляем класс text-center -->
         <h1>{{ title }}</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, voluptas?</p>
-         <a href="{% url 'about' %}" class="btn btn-warning">На страницу про нас</a>
+        <a href="{% url 'about' %}" class="btn btn-warning">На страницу про нас</a>
     </div>
 {% endblock %}

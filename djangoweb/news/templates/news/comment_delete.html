@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<h2>Вы уверены, что хотите удалить этот комментарий?</h2>
+<p><strong>{{ object.user.username }}</strong> - {{ object.created_at }}</p>
+<p>{{ object.content }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="{% url 'details_view' object.news.pk %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

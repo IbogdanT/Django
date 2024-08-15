@@ -3,9 +3,9 @@
 {% block title %}Про нас{% endblock %}
 
 {% block content %}
-    <div class="features">
+    <div class="features text-center"> <!-- Добавляем класс text-center -->
         <h1>Про нас</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, voluptas?</p>
-        <a href="{% url 'home' %}" class="btn btn-danger">Главная страница</a>
+        <a href="{% url 'index' %}" class="btn btn-danger">Главная страница</a>
     </div>
 {% endblock %}

@@ -1,178 +1,207 @@
 /* Общие стили для тела страницы */
 body {
-    background: #2c2c2c;
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh;
+    background-color: #292b2c25; /* фон страницы */
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    color: #505050; /* Темно-серый текст */
+}
+
+/* Уменьшение высоты панели навигации */
+.navbar {
+    padding: 5px 15px; /* Уменьшены отступы */
+    height: 60px; /* Уменьшена высота панели */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Уменьшена максимальная высота логотипа */
+    height: auto;
+}
+
+.navbar-nav .nav-link {
+    padding: 8px 12px; /* Уменьшены внутренние отступы для ссылок */
+    font-size: 14px; /* Уменьшен размер шрифта для ссылок */
+}
+
+/* Уменьшение размера кнопок */
+.btn-primary, .btn-secondary {
+    font-size: 14px; /* Уменьшен размер шрифта кнопок */
+    padding: 6px 12px; /* Уменьшены внутренние отступы кнопок */
+    border-radius: 4px; /* Уменьшен радиус скругления кнопок */
 }
 
 /* Стили для боковой панели */
 aside {
-    background: #181818;
-    width: 20%; /* Ширина боковой панели */
-    padding: 2.5%;
-    height: 100vh;
+    background-color: #262e33; /* синий фон */
     color: #fff;
-    border-right: none; /* Убрана разделяющая линия */
-    box-sizing: border-box; /* Корректное вычисление ширины и высоты */
-    float: left; /* Плавающий элемент для размещения сбоку */
+    width: 250px;
+    padding: 20px;
+    height: 100vh;
+    float: left;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Легкая тень справа */
+    box-sizing: border-box; /* Включаем padding в ширину и высоту */
 }
 
-/* Стили для изображения и логотипа в боковой панели */
 aside img {
-    width: 100%; /* Логотип занимает всю ширину боковой панели */
-    max-width: 200px; /* Устанавливаем максимальную ширину для логотипа */
-    margin-bottom: 20px; /* Отступ снизу для логотипа */
+    max-width: 150px; /* Уменьшена максимальная ширина логотипа */
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Центрирование логотипа и отступ снизу */
 }
 
 aside .logo {
-    font-size: 40px;
-    margin-left: 0;
+    font-size: 28px; /* Уменьшен размер шрифта логотипа */
     font-weight: bold;
-    text-align: center; /* Центрирование текста логотипа */
-    display: block;
+    text-align: center;
+    margin-bottom: 20px; /* Отступ снизу логотипа */
 }
 
 /* Стили заголовков и списка в боковой панели */
 aside h3 {
-    margin-top: 20px; /* Уменьшенный отступ сверху */
-    font-size: 28px;
-    text-align: center; /* Центрирование заголовка */
+    font-size: 20px; /* Уменьшен размер шрифта заголовков */
+    margin-top: 20px;
+    text-align: center;
 }
 
 aside ul {
     list-style: none;
     padding: 0;
-    text-align: center; /* Центрирование текста в списке */
 }
 
 aside ul li {
-    color: #fff;
-    display: block;
-    margin-top: 20px;
-    transition: transform .6s ease;
+    margin-top: 15px;
 }
 
-aside ul li:hover, aside ul a:hover {
-    color: #eb5959;
+aside ul a {
+    color: #fff;
     text-decoration: none;
-    transform: scale(1.05);
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+aside ul a:hover {
+    background-color: #003d5e; /* Темно-синий фон при наведении */
+    color: #cce4f6; /* Светло-голубой текст при наведении */
 }
 
 /* Стили для основного контента */
 main {
-    margin-left: 20%; /* Оставляем место для aside */
-    padding: 2% 4%;
-    color: #fff;
+    margin-left: 250px;
+    padding: 20px;
+    padding-top: 80px;
 }
 
 /* Стили для раздела "features" */
 main .features {
-    margin-top: 50px; /* Уменьшенный отступ сверху */
-    text-align: center;
+    margin-top: 20px;
+    text-align: center; /* Центрирование содержимого */
 }
 
 main .features h1 {
-    font-size: 50px;
+    font-size: 36px;
+    color: #004b77; /* Основной цвет заголовка */
 }
 
 main .features p {
-    max-width: 400px;
-    margin: 20px auto;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
+
+main .features .btn {
+    display: inline-block; /* Кнопки будут в строке */
+    margin-top: 20px; /* Отступ сверху для кнопок */
+}
+
 
 /* Стили для предупреждающих сообщений */
 .alert-warning {
-    width: 400px;
-    margin: 20px auto;
-    text-align: left;
+    background-color: #eaf0f9;
+    border: 1px solid #b6d4fe;
+    color: #004b77;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для форм */
+/* Стили для формы */
 form {
-    margin: 0; /* Убираем отступы для формы */
+    background-color: #fff; /* Белый фон формы */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-/* Стили для полей ввода */
 .form-control {
-    background: #333; /* Фон полей ввода */
-    color: #fff; /* Цвет текста в полях ввода */
-    border: 1px solid #555; /* Цвет и стиль границы полей ввода */
-    border-radius: 5px; /* Скругление углов полей ввода */
-    padding: 10px; /* Внутренние отступы */
+    background-color: #f9f9f9;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 15px;
 }
 
 .form-control::placeholder {
-    color: #888; /* Цвет плейсхолдера */
+    color: #888;
 }
 
-/* Стили для кнопок в модальных окнах */
 .btn-primary {
-    background-color: #007bff; /* Основной цвет кнопки */
-    border-color: #007bff; /* Цвет границы кнопки */
-    color: #fff; /* Цвет текста на кнопке */
-    border-radius: 5px; /* Скругление углов кнопки */
-    padding: 10px 20px; /* Внутренние отступы */
-    font-size: 16px; /* Размер шрифта */
-    font-weight: bold; /* Полужирное начертание текста */
-    text-transform: uppercase; /* Преобразование текста в верхний регистр */
-    transition: background-color 0.3s ease; /* Плавный переход цвета фона при наведении */
+    background-color: #2b2b2c;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Цвет кнопки при наведении */
-    border-color: #004085; /* Цвет границы кнопки при наведении */
+    background-color: #003d5e;
 }
 
-/* Стили для кнопок во втором модальном окне */
+/* Стили для кнопок отмены или дополнительных действий */
 .btn-secondary {
-    background-color: #6c757d; /* Основной цвет кнопки */
-    border-color: #6c757d; /* Цвет границы кнопки */
-    color: #fff; /* Цвет текста на кнопке */
-    border-radius: 5px; /* Скругление углов кнопки */
-    padding: 10px 20px; /* Внутренние отступы */
-    font-size: 16px; /* Размер шрифта */
-    font-weight: bold; /* Полужирное начертание текста */
-    text-transform: uppercase; /* Преобразование текста в верхний регистр */
-    transition: background-color 0.3s ease; /* Плавный переход цвета фона при наведении */
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268; /* Цвет кнопки при наведении */
-    border-color: #545b62; /* Цвет границы кнопки при наведении */
+    background-color: #5a6268;
 }
 
 /* Стили для модальных окон */
 .modal-content {
-    background: #2c2c2c; /* Фон модального окна */
-    color: #fff; /* Цвет текста */
-    border-radius: 10px; /* Скругление углов */
-    border: none; /* Убираем границу */
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    border: none;
 }
 
 .modal-header {
-    border-bottom: none; /* Убираем нижнюю границу заголовка */
+    border-bottom: 1px solid #ccc;
 }
 
 .modal-title {
-    font-size: 24px; /* Размер шрифта заголовка */
-    font-weight: bold; /* Полужирное начертание */
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .btn-close {
-    filter: invert(1); /* Делает крестик закрытия белым на темном фоне */
-}
-
-/* Стили для тела модального окна */
-.modal-body {
-    padding: 20px; /* Отступы внутри тела модального окна */
-}
-
-.modal-content {
-    background: transparent; /* Фон прозрачный */
-    border: none;
+    filter: invert(1);
 }
 
 /* Стили для кнопок с деталями */
@@ -189,42 +218,19 @@ form {
     font-weight: bold;
     font-size: 16px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     cursor: pointer;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    color: white;
-    position: relative;
-    overflow: hidden;
+    color: #fff;
 }
 
-.button-detail .btn:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.button-detail .btn:hover:before {
-    opacity: 1;
-    transform: scale(1.5);
-}
-
-/* Стили для разных типов кнопок */
 .button-detail .btn-danger {
     background: linear-gradient(45deg, #ff6b6b, #ee5253);
 }
 
 .button-detail .btn-danger:hover {
     background: linear-gradient(45deg, #ee5253, #ff6b6b);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(255, 107, 107, 0.3);
 }
 
 .button-detail .btn-info {
@@ -233,8 +239,6 @@ form {
 
 .button-detail .btn-info:hover {
     background: linear-gradient(45deg, #10ac84, #1dd1a1);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(29, 209, 161, 0.3);
 }
 
 .button-detail .btn-secondary {
@@ -243,42 +247,59 @@ form {
 
 .button-detail .btn-secondary:hover {
     background: linear-gradient(45deg, #495057, #6c757d);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(108, 117, 125, 0.3);
 }
 
-/* Стили для текстового поля в форме */
-textarea {
-    resize: none; /* Запрещает изменение размера поля пользователем */
-    width: 100%; /* Ширина в 100% от родительского элемента */
-    box-sizing: border-box; /* Учитывает паддинг и бордер в общей ширине */
+/* Стили для текстового поля */
+.text-field {
+    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
 }
 
-/* Стили для навигационной панели */
-.navbar {
-    background-color: #f8f9fa; /* Убедитесь, что фон панели один и тот же */
-    border-bottom: none; /* Убирает нижнюю границу */
-    padding: 0.5rem 1rem; /* Устанавливает отступы вокруг элементов */
-}
-
-/* Стили для логотипа */
-.logo-image {
-    max-height: 50px; /* Ограничивает высоту логотипа */
-    height: auto; /* Сохраняет пропорции изображения */
-}
-
-/* Стили для кнопок */
-.nav-link {
-    margin-left: 0.5rem; /* Добавляет небольшой отступ между кнопками */
-}
-
-/* Стили для кнопок при наведении */
-.btn-outline-primary:hover, .btn-primary:hover {
-    background-color: #0056b3; /* Смена фона при наведении на кнопки */
-    border-color: #004085; /* Смена границы при наведении */
-}
-
-/* Убираем любые возможные разделяющие линии */
-.navbar-nav .nav-item {
+/* Стили для кнопки "Читать далее" */
+.btn-read-more {
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #004b77;
+    color: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-read-more:hover {
+    background-color: #003d5e;
+}
+
+/* Стили для кнопки "Удалить комментарий" */
+.btn-delete-comment {
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-delete-comment:hover {
+    background-color: #c82333;
+}
+
+/* Стили для скрытого контента */
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.content.visible {
+    max-height: 1000px;
 }

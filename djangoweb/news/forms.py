@@ -1,16 +1,19 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Articles
+from django.contrib.auth import authenticate
+from .models import Articles, Comment
 
-# Форма регистрации
 class RegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, label="Пароль")
-    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Подтверждение пароля")
+    password = forms.CharField(widget=forms.PasswordInput, label="Пароль", required=True, min_length=8)
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Подтверждение пароля", required=True)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email']
+        widgets = {
+            'email': forms.EmailInput(attrs={'type': 'email'}),
+        }
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get('password')
@@ -26,10 +29,9 @@ class RegisterForm(forms.ModelForm):
             raise ValidationError("Данный пользователь уже существует")
         return username
 
-# Форма входа
 class LoginForm(forms.Form):
-    username = forms.CharField(label="Имя пользователя")
-    password = forms.CharField(widget=forms.PasswordInput, label="Пароль")
+    username = forms.CharField(label="Имя пользователя", required=True)
+    password = forms.CharField(widget=forms.PasswordInput, label="Пароль", required=True)
 
     def clean(self):
         cleaned_data = super().clean()
@@ -39,15 +41,31 @@ class LoginForm(forms.Form):
         if username and password:
             user = authenticate(username=username, password=password)
             if user is None:
-                raise ValidationError("Данный аккаунт не существует")
+                raise ValidationError("Неверное имя пользователя или пароль")
             if not user.is_active:
                 raise ValidationError("Этот аккаунт неактивен")
 
-# Форма создания новостей
 class ArticlesForm(forms.ModelForm):
     class Meta:
         model = Articles
         fields = ['title', 'anons', 'full_text', 'date']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
+        }
+
+    def clean_full_text(self):
+        full_text = self.cleaned_data.get('full_text')
+        word_count = len(full_text.split())
+
+        if word_count < 50:
+            raise ValidationError('Текст статьи должен содержать не менее 50 слов. Сейчас: {}'.format(word_count))
+
+        return full_text
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Ваш комментарий...'})
         }

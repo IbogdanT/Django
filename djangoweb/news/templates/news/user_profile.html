@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+        <div class="alert alert-info text-center mt-5" style="font-size: 1.5em; font-weight: bold;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h1>Профиль пользователя: {{ user.username }}</h1>
+    <p><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
+    <p><strong>Количество написанных новостей:</strong> {{ news_count }}</p>
+</div>
+{% endblock %}

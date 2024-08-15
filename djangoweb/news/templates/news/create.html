@@ -1,18 +1,51 @@
 {% extends 'main/layout.html' %}
-
-{% block title %}Форма по добавлению статьи{% endblock %}
+{% load widget_tweaks %}
 
 {% block content %}
-    <div class="features">
-        <h1>Форма по добавлении статьи</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.title }}<br>
-            {{ form.anons }}<br>
-            {{ form.full_text }}<br>
-            {{ form.date }}<br>
-            <span>{{ error }}</span>
-            <button class="btn btn-success" type="submit">Добавить статью</button>
-        </form>
-    </div>
+<div class="container">
+    <h1>{% if form.instance.pk %}Редактировать статью{% else %}Создать статью{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="id_title" class="form-label">Название статьи</label>
+                {{ form.title|add_class:"form-control" }}
+                {% if form.title.errors %}
+                    <div class="text-danger">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="id_anons" class="form-label">Анонс</label>
+                {{ form.anons|add_class:"form-control" }}
+                {% if form.anons.errors %}
+                    <div class="text-danger">{{ form.anons.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label for="id_full_text" class="form-label">Текст статьи</label>
+                {{ form.full_text|add_class:"form-control" }}
+                {% if form.full_text.errors %}
+                    <div class="text-danger">{{ form.full_text.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="id_date" class="form-label">Дата</label>
+                {{ form.date|add_class:"form-control" }}
+                {% if form.date.errors %}
+                    <div class="text-danger">{{ form.date.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Внести изменения{% else %}Создать{% endif %}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
